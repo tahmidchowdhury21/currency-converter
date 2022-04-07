@@ -218,7 +218,12 @@ public class GUI {
 				String getValue = amount_field.getText();
 				if (getValue.equals("") || getValue.contains(" ")) {
 					JOptionPane.showMessageDialog(frame, "Amount is required!", "Alert", JOptionPane.ERROR_MESSAGE);
-				} else if (selectedCurrency.equals("None")) {
+				}
+				else if (Double.parseDouble(getValue) < 0) {
+					JOptionPane.showMessageDialog(frame, "Amount can't be negative!", "Alert", JOptionPane.ERROR_MESSAGE);
+				}
+				
+				else if (selectedCurrency.equals("None")) {
 					JOptionPane.showMessageDialog(frame, "Base currency must be selected", "Alert",
 							JOptionPane.ERROR_MESSAGE);
 				} else {

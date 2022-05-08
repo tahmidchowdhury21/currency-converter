@@ -216,28 +216,32 @@ public class GUI {
 			@Override
 			public void actionPerformed(ActionEvent ae) {
 				String getValue = amount_field.getText();
-				if (getValue.equals("") || getValue.contains(" ")) {
-					JOptionPane.showMessageDialog(frame, "Amount is required!", "Alert", JOptionPane.ERROR_MESSAGE);
-				}
-				else if (Double.parseDouble(getValue) < 0) {
-					JOptionPane.showMessageDialog(frame, "Amount can't be negative!", "Alert", JOptionPane.ERROR_MESSAGE);
-				}
-				
-				else if (selectedCurrency.equals("None")) {
-					JOptionPane.showMessageDialog(frame, "Base currency must be selected", "Alert",
-							JOptionPane.ERROR_MESSAGE);
-				} else {
+				try {
+					if (getValue.equals("") || getValue.contains(" ")) {
+						JOptionPane.showMessageDialog(frame, "Amount is required!", "Alert", JOptionPane.ERROR_MESSAGE);
+					} else if (Double.parseDouble(getValue) < 0) {
+						JOptionPane.showMessageDialog(frame, "Amount can't be negative!", "Alert",
+								JOptionPane.ERROR_MESSAGE);
+					}
 
-					CurrencyConverter currencyConverter = new CurrencyConverter(Double.parseDouble(getValue));
-					CurrencyConverter.currencyConversion(selectedCurrency);
+					else if (selectedCurrency.equals("None")) {
+						JOptionPane.showMessageDialog(frame, "Base currency must be selected", "Alert",
+								JOptionPane.ERROR_MESSAGE);
+					} else {
 
-					Hashtable<String, String> cc = CurrencyConverter.getConverted_currencies();
-					
-					dollar_result.setText((cc.get("Dollar") == null) ? "Done!" : cc.get("Dollar"));
-					pound_result.setText((cc.get("Pound") == null) ? "Done!" : cc.get("Pound"));
-					rupee_result.setText((cc.get("Rupee") == null) ? "Done!" : cc.get("Rupee"));
-					yen_result.setText((cc.get("Yen") == null) ? "Done!" : cc.get("Yen"));
-					euro_result.setText((cc.get("Euro") == null) ? "Done!" : cc.get("Euro"));
+						CurrencyConverter currencyConverter = new CurrencyConverter(Double.parseDouble(getValue));
+						CurrencyConverter.currencyConversion(selectedCurrency);
+
+						Hashtable<String, String> cc = CurrencyConverter.getConverted_currencies();
+
+						dollar_result.setText((cc.get("Dollar") == null) ? "Done!" : cc.get("Dollar"));
+						pound_result.setText((cc.get("Pound") == null) ? "Done!" : cc.get("Pound"));
+						rupee_result.setText((cc.get("Rupee") == null) ? "Done!" : cc.get("Rupee"));
+						yen_result.setText((cc.get("Yen") == null) ? "Done!" : cc.get("Yen"));
+						euro_result.setText((cc.get("Euro") == null) ? "Done!" : cc.get("Euro"));
+					}
+				} catch (NumberFormatException e) {
+					JOptionPane.showMessageDialog(frame, "Enter a valid amount", "Alert", JOptionPane.ERROR_MESSAGE);
 				}
 
 			}

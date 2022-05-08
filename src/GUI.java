@@ -153,13 +153,13 @@ public class GUI {
 
 		JLabel dollar = new JLabel("Dollar($) :", JLabel.CENTER);
 		JLabel dollar_result = new JLabel("0", JLabel.CENTER);
-		JLabel pound = new JLabel("Pound(£) :", JLabel.CENTER);
+		JLabel pound = new JLabel("Pound(\u00a3) :", JLabel.CENTER);
 		JLabel pound_result = new JLabel("0", JLabel.CENTER);
-		JLabel rupee = new JLabel("Rupee(₹) :", JLabel.CENTER);
+		JLabel rupee = new JLabel("Rupee(\u20B9) :", JLabel.CENTER);
 		JLabel rupee_result = new JLabel("0", JLabel.CENTER);
-		JLabel yen = new JLabel("Yen(¥) :", JLabel.RIGHT);
+		JLabel yen = new JLabel("Yen(\u00A5) :", JLabel.RIGHT);
 		JLabel yen_result = new JLabel("0", JLabel.CENTER);
-		JLabel euro = new JLabel("Euro(€) :", JLabel.RIGHT);
+		JLabel euro = new JLabel("Euro(\u20AC) :", JLabel.RIGHT);
 		JLabel euro_result = new JLabel("0", JLabel.CENTER);
 
 		dollar.setFont(new Font("Calibri", Font.BOLD, 18));
